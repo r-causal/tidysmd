@@ -14,6 +14,7 @@ Depends:
     R (>= 2.10)
 Imports: 
     dplyr,
+    ellipsis,
     glue,
     purrr,
     rlang,
@@ -22,6 +23,7 @@ Imports:
     tidyr,
     tidyselect
 Suggests: 
+    covr,
     ggplot2,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
