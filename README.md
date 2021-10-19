@@ -17,7 +17,13 @@ adjustment strategies.
 
 ## Installation
 
-You can install the development version of tidysmd from
+You can install the most recent version of tidysmd from CRAN with:
+
+``` r
+install.packages("tidysmd")
+```
+
+Alternatively, you can install the development version of tidysmd from
 [GitHub](https://github.com/) with:
 
 ``` r
