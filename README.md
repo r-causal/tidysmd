@@ -6,7 +6,10 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of tidysmd is to …
+The goal of tidysmd is to easily create tidy data frames of SMDs.
+tidysmd wraps the smd package to easily calculate SMDs across many
+variables and using several weights in order to easily compare different
+adjustment strategies.
 
 ## Installation
 
@@ -20,36 +23,66 @@ devtools::install_github("malcolmbarrett/tidysmd")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+`tidy_smd()` supports both unweighted SMDs and weighted SMDs.
 
 ``` r
 library(tidysmd)
-## basic example code
+tidy_smd(nhefs_weights, c(age, education, race), .group = qsmk)
+#> # A tibble: 3 × 3
+#>   variable  weights       smd
+#>   <chr>     <chr>       <dbl>
+#> 1 age       unweighted -0.282
+#> 2 education unweighted  0.196
+#> 3 race      unweighted  0.177
+```
+
+`nhefs_weights` contains several types of propensity score weights for
+which we can calculate SMDs. Unweighted SMDs are also included by
+default.
+
+``` r
+tidy_smd(
+  nhefs_weights,
+  c(age, race, education),
+  .group = qsmk,
+  .wts = c(w_ate, w_att, w_atm)
+)
+#> # A tibble: 12 × 3
+#>    variable  weights         smd
+#>    <chr>     <chr>         <dbl>
+#>  1 age       unweighted -0.282  
+#>  2 race      unweighted  0.177  
+#>  3 education unweighted  0.196  
+#>  4 age       w_ate      -0.00585
+#>  5 race      w_ate       0.00664
+#>  6 education w_ate       0.0347 
+#>  7 age       w_att      -0.0120 
+#>  8 race      w_att       0.00365
+#>  9 education w_att       0.0267 
+#> 10 age       w_atm      -0.00184
+#> 11 race      w_atm       0.00113
+#> 12 education w_atm       0.00934
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?
 You can include R chunks like so:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(ggplot2)
+plot_df <- tidy_smd(
+  nhefs_weights,
+  race:active,
+  .group = qsmk,
+  .wts = starts_with("w_")
+)
+
+ggplot(
+  data = plot_df,
+  mapping = aes(x = abs(smd), y = variable, group = weights, color = weights)
+) +
+  geom_line(orientation = "y") +
+  geom_point() + 
+  geom_vline(xintercept = 0.1, color = "black", size = 0.1)
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
