@@ -6,7 +6,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-0299-5825"))
 Description: Tidy standardized mean differences ('SMDs'). 'tidysmd' uses
     the 'smd' package to calculate standardized mean differences for
-    variables in a dataframe, returning the results in a tidy format.
+    variables in a data frame, returning the results in a tidy format.
 License: MIT + file LICENSE
 URL: https://github.com/malcolmbarrett/tidysmd
 BugReports: https://github.com/malcolmbarrett/tidysmd/issues
@@ -23,6 +23,7 @@ Imports:
     tidyr,
     tidyselect
 Suggests: 
+    spelling,
     covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
@@ -30,3 +31,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Language: en-US

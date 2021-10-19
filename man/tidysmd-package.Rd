@@ -6,7 +6,7 @@
 \alias{tidysmd-package}
 \title{tidysmd: Tidy Standardized Mean Differences}
 \description{
-Tidy standardized mean differences ('SMDs'). 'tidysmd' uses the 'smd' package to calculate standardized mean differences for variables in a dataframe, returning the results in a tidy format.
+Tidy standardized mean differences ('SMDs'). 'tidysmd' uses the 'smd' package to calculate standardized mean differences for variables in a data frame, returning the results in a tidy format.
 }
 \seealso{
 Useful links:
