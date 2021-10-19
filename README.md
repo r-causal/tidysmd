@@ -4,6 +4,8 @@
 # tidysmd
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/malcolmbarrett/tidysmd/workflows/R-CMD-check/badge.svg)](https://github.com/malcolmbarrett/tidysmd/actions)
 <!-- badges: end -->
 
 The goal of tidysmd is to easily create tidy data frames of SMDs.
