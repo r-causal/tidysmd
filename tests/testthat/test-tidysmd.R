@@ -11,6 +11,11 @@ pull_smd <- function(.smds, .v, .w = "unweighted") {
 }
 
 test_that("tidy_smd() works without weights", {
+  expect_error(
+    tidy_smd(nhefs_weights, age, .group = qsmk, include_unweighted = FALSE),
+    "Must specify `.wts` if `include_unweighted = FALSE`"
+  )
+
   .smds <- tidy_smd(nhefs_weights, c(age, education, race), .group = qsmk)
   expect_tidy_smd_tbl(.smds, .rows = 3)
 
