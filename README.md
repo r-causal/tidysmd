@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/malcolmbarrett/tidysmd/workflows/R-CMD-check/badge.svg)](https://github.com/malcolmbarrett/tidysmd/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/malcolmbarrett/tidysmd/branch/main/graph/badge.svg)](https://app.codecov.io/gh/malcolmbarrett/tidysmd?branch=main)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/tidysmd)](https://CRAN.R-project.org/package=tidysmd)
 <!-- badges: end -->
 
 The goal of tidysmd is to easily create tidy data frames of SMDs.
