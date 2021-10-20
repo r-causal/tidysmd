@@ -11,7 +11,8 @@ tidy_smd(
   .wts = NULL,
   include_unweighted = TRUE,
   na.rm = FALSE,
-  gref = 1L
+  gref = 1L,
+  std.error = FALSE
 )
 }
 \arguments{
@@ -30,6 +31,9 @@ unweighted SMD?}
 
 \item{gref}{an integer indicating which level of \code{g} to use as the reference
 group. Defaults to \code{1}.}
+
+\item{std.error}{Logical indicator for computing standard errors using
+\code{\link[smd]{compute_smd_var}}. Defaults to \code{FALSE}.}
 }
 \value{
 a tibble

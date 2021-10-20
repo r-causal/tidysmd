@@ -28,8 +28,9 @@
 #'   .group = qsmk,
 #'   .wts = c(w_ate, w_att, w_atm)
 #' )
-tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_unweighted = TRUE, na.rm = FALSE, gref = 1L) {
+tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_unweighted = TRUE, na.rm = FALSE, gref = 1L, std.error = FALSE) {
   # check_weights(.wt)
+  .df <- dplyr::as_tibble(.df)
   .vars <- enquo(.vars)
   .group <- enquo(.group)
   .wts <- enquo(.wts)
@@ -39,13 +40,13 @@ tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_unweighted = TRUE,
   }
 
   if (include_unweighted) {
-    unwts <- tidy_unweighted_smd(.df, !!.vars, !!.group, na.rm = na.rm, gref = gref)
+    unwts <- tidy_unweighted_smd(.df, !!.vars, !!.group, na.rm = na.rm, gref = gref, std.error = std.error)
   } else {
     unwts <- NULL
   }
 
   if (!quo_is_null(.wts)) {
-    wts <- map_tidy_smd(.df, !!.vars, !!.group, !!.wts, na.rm = na.rm, gref = gref)
+    wts <- map_tidy_smd(.df, !!.vars, !!.group, !!.wts, na.rm = na.rm, gref = gref, std.error = std.error)
   } else {
     wts <- NULL
   }
@@ -53,7 +54,7 @@ tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_unweighted = TRUE,
   dplyr::bind_rows(unwts, wts)
 }
 
-tidy_unweighted_smd <- function(.df, .vars, .group, na.rm = FALSE, gref = 1L) {
+tidy_unweighted_smd <- function(.df, .vars, .group, na.rm = FALSE, gref = 1L, std.error = FALSE) {
   .vars <- enquo(.vars)
   .group <- enquo(.group)
 
@@ -61,24 +62,26 @@ tidy_unweighted_smd <- function(.df, .vars, .group, na.rm = FALSE, gref = 1L) {
     .df,
     dplyr::across(
       !!.vars,
-      ~ smd::smd(.x, !!.group, na.rm = na.rm, gref = gref)$estimate
+      ~ smd::smd(.x, !!.group, na.rm = na.rm, gref = gref, std.error = std.error)
     )
   )
 
-  pivot_smd(.df, "unweighted")
+  .df <- pivot_smd(.df, "unweighted")
+
+  dplyr::rename(.df, {{ .group }} := term)
 }
 
-map_tidy_smd <- function(.df, .vars, .group, .wts, na.rm = FALSE, gref = 1L) {
+map_tidy_smd <- function(.df, .vars, .group, .wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
   .vars <- enquo(.vars)
   .group <- enquo(.group)
   wt_cols <- enquo(.wts)
   wt_vars <- names(tidyselect::eval_select(wt_cols, .df))
 
-  purrr::map_dfr(wt_vars, ~ tidy_weighted_smd(.df, !!.vars, !!.group, .wts = .x))
+  purrr::map_dfr(wt_vars, ~ tidy_weighted_smd(.df, !!.vars, !!.group, .wts = .x, na.rm = na.rm, gref = gref, std.error = std.error))
 }
 
 
-tidy_weighted_smd <- function(.df, .vars, .group, .wts, na.rm = FALSE, gref = 1L) {
+tidy_weighted_smd <- function(.df, .vars, .group, .wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
   .vars <- enquo(.vars)
   .group <- enquo(.group)
   force(.wts)
@@ -88,21 +91,26 @@ tidy_weighted_smd <- function(.df, .vars, .group, .wts, na.rm = FALSE, gref = 1L
     .df,
     dplyr::across(
       !!.vars,
-      ~ smd::smd(.x, !!.group, w = !!.wts_sym, na.rm = na.rm, gref = gref)$estimate
+      ~ smd::smd(.x, !!.group, w = !!.wts_sym, na.rm = na.rm, gref = gref, std.error = std.error)
     )
   )
 
-  pivot_smd(.df, .wts)
+  .df <- pivot_smd(.df, .wts)
+
+  dplyr::rename(.df, {{ .group }} := term)
 }
 
 pivot_smd <- function(.df, weights_col) {
   .df <- tidyr::pivot_longer(
     .df,
     dplyr::everything(),
-    values_to = "smd",
+    values_to = "smd_results",
     names_to = "variable"
   )
 
+  .df <- tidyr::unpack(.df, smd_results)
+
   .df <- dplyr::mutate(.df, weights = weights_col)
-  dplyr::select(.df, variable, weights, smd)
+
+  dplyr::select(.df, variable, weights, term, smd = estimate, dplyr::any_of("std.error"))
 }

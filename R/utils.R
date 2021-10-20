@@ -1,5 +1,8 @@
 globalVariables(c(
   "variable",
   "weights",
-  "smd"
+  "smd",
+  "estimate",
+  "smd_results",
+  "term"
 ))
