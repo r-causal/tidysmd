@@ -8,7 +8,8 @@ Description: Tidy standardized mean differences ('SMDs'). 'tidysmd' uses
     the 'smd' package to calculate standardized mean differences for
     variables in a data frame, returning the results in a tidy format.
 License: MIT + file LICENSE
-URL: https://github.com/malcolmbarrett/tidysmd
+URL: https://github.com/malcolmbarrett/tidysmd,
+    https://malcolmbarrett.github.io/tidysmd
 BugReports: https://github.com/malcolmbarrett/tidysmd/issues
 Depends: 
     R (>= 2.10)
