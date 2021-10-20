@@ -59,7 +59,7 @@ tidy_smd(
 )
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Having SMDs in a tidy format makes it easy to work with the estimates, for instance in creating Love plots:
 
 ```{r}
 library(ggplot2)

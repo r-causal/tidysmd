@@ -40,12 +40,12 @@ devtools::install_github("malcolmbarrett/tidysmd")
 ``` r
 library(tidysmd)
 tidy_smd(nhefs_weights, c(age, education, race), .group = qsmk)
-#> # A tibble: 3 × 3
-#>   variable  weights       smd
-#>   <chr>     <chr>       <dbl>
-#> 1 age       unweighted -0.282
-#> 2 education unweighted  0.196
-#> 3 race      unweighted  0.177
+#> # A tibble: 3 × 4
+#>   variable  weights    qsmk     smd
+#>   <chr>     <chr>      <chr>  <dbl>
+#> 1 age       unweighted 1     -0.282
+#> 2 education unweighted 1      0.196
+#> 3 race      unweighted 1      0.177
 ```
 
 `nhefs_weights` contains several types of propensity score weights for
@@ -59,25 +59,25 @@ tidy_smd(
   .group = qsmk,
   .wts = c(w_ate, w_att, w_atm)
 )
-#> # A tibble: 12 × 3
-#>    variable  weights         smd
-#>    <chr>     <chr>         <dbl>
-#>  1 age       unweighted -0.282  
-#>  2 race      unweighted  0.177  
-#>  3 education unweighted  0.196  
-#>  4 age       w_ate      -0.00585
-#>  5 race      w_ate       0.00664
-#>  6 education w_ate       0.0347 
-#>  7 age       w_att      -0.0120 
-#>  8 race      w_att       0.00365
-#>  9 education w_att       0.0267 
-#> 10 age       w_atm      -0.00184
-#> 11 race      w_atm       0.00113
-#> 12 education w_atm       0.00934
+#> # A tibble: 12 × 4
+#>    variable  weights    qsmk       smd
+#>    <chr>     <chr>      <chr>    <dbl>
+#>  1 age       unweighted 1     -0.282  
+#>  2 race      unweighted 1      0.177  
+#>  3 education unweighted 1      0.196  
+#>  4 age       w_ate      1     -0.00585
+#>  5 race      w_ate      1      0.00664
+#>  6 education w_ate      1      0.0347 
+#>  7 age       w_att      1     -0.0120 
+#>  8 race      w_att      1      0.00365
+#>  9 education w_att      1      0.0267 
+#> 10 age       w_atm      1     -0.00184
+#> 11 race      w_atm      1      0.00113
+#> 12 education w_atm      1      0.00934
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Having SMDs in a tidy format makes it easy to work with the estimates,
+for instance in creating Love plots:
 
 ``` r
 library(ggplot2)

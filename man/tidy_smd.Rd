@@ -42,13 +42,15 @@ a tibble
 \code{tidy_smd()} calculates the standardized mean difference (SMD) for variables
 in a dataset between groups. Optionally, you may also calculate weighted
 SMDs. \code{tidy_smd()} wraps \code{smd::smd()}, returning a tidy dataframe with the
-columns \code{variable}, \code{weights}, and \code{smd}. You may also supply multiple
-weights to calculate multiple weighted SMDs, useful when comparing different
-types of weights.
+columns \code{variable}, \code{weights}, and \code{smd}, as well as fourth column the
+contains the level of \code{.group} the SMD represents. You may also supply
+multiple weights to calculate multiple weighted SMDs, useful when comparing
+different types of weights.
 }
 \examples{
 
 tidy_smd(nhefs_weights, c(age, education, race), .group = qsmk)
+tidy_smd(nhefs_weights, c(age, education), .group = qsmk, std.error = TRUE)
 
 tidy_smd(
   nhefs_weights,

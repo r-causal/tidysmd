@@ -3,9 +3,10 @@
 #' `tidy_smd()` calculates the standardized mean difference (SMD) for variables
 #' in a dataset between groups. Optionally, you may also calculate weighted
 #' SMDs. `tidy_smd()` wraps `smd::smd()`, returning a tidy dataframe with the
-#' columns `variable`, `weights`, and `smd`. You may also supply multiple
-#' weights to calculate multiple weighted SMDs, useful when comparing different
-#' types of weights.
+#' columns `variable`, `weights`, and `smd`, as well as fourth column the
+#' contains the level of `.group` the SMD represents. You may also supply
+#' multiple weights to calculate multiple weighted SMDs, useful when comparing
+#' different types of weights.
 #'
 #' @param .df A data frame
 #' @param .vars Variables for which to calculate SMD
@@ -21,6 +22,7 @@
 #' @examples
 #'
 #' tidy_smd(nhefs_weights, c(age, education, race), .group = qsmk)
+#' tidy_smd(nhefs_weights, c(age, education), .group = qsmk, std.error = TRUE)
 #'
 #' tidy_smd(
 #'   nhefs_weights,
