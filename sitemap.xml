@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://malcolmbarrett.github.io/tidysmd/404.html</loc>
+  </url>
+  <url>
+    <loc>https://malcolmbarrett.github.io/tidysmd/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://malcolmbarrett.github.io/tidysmd/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://malcolmbarrett.github.io/tidysmd/authors.html</loc>
+  </url>
+  <url>
     <loc>https://malcolmbarrett.github.io/tidysmd/index.html</loc>
+  </url>
+  <url>
+    <loc>https://malcolmbarrett.github.io/tidysmd/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://malcolmbarrett.github.io/tidysmd/reference/index.html</loc>
   </url>
   <url>
     <loc>https://malcolmbarrett.github.io/tidysmd/reference/nhefs_weights.html</loc>
