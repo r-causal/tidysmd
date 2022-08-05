@@ -77,7 +77,8 @@ tidy_smd(
 ```
 
 Having SMDs in a tidy format makes it easy to work with the estimates,
-for instance in creating Love plots:
+for instance in creating Love plots. tidysmd includes `geom_love()` to
+make this a bit easier:
 
 ``` r
 library(ggplot2)
@@ -88,13 +89,7 @@ plot_df <- tidy_smd(
   .wts = starts_with("w_")
 )
 
-ggplot(
-  data = plot_df,
-  mapping = aes(x = abs(smd), y = variable, group = weights, color = weights)
-) +
-  geom_line(orientation = "y") +
-  geom_point() + 
-  geom_vline(xintercept = 0.1, color = "black", size = 0.1)
+ggplot(plot_df) + geom_love()
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />

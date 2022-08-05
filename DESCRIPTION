@@ -24,7 +24,8 @@ Imports:
 Suggests: 
     spelling,
     covr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    ggplot2
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
