@@ -83,7 +83,7 @@ ggplot(
     geom_love()
 ```
 
-You can also use the quickplotting function `love_plot()`, if you prefer:
+You can also use the quick-plotting function `love_plot()`, if you prefer:
 
 ```{r}
 love_plot(plot_df) + 

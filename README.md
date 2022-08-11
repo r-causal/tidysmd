@@ -104,7 +104,7 @@ ggplot(
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
-You can also use the quickplotting function `love_plot()`, if you
+You can also use the quick-plotting function `love_plot()`, if you
 prefer:
 
 ``` r
