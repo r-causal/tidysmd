@@ -62,6 +62,7 @@ geom_love <- function(line_size = .8, point_size = 1.85, vline_xintercept = 0.1,
 
 #' @export
 #' @rdname geom_love
+#' @param .df a data frame produced by `tidy_smd()`
 love_plot <- function(.df, line_size = .8, point_size = 1.85, vline_xintercept = 0.1, vline_color = "grey70", vline_size = 0.6) {
   check_installed("ggplot2")
 

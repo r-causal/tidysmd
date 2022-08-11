@@ -34,6 +34,8 @@ love_plot(
 
 \item{vline_size}{The vertical line size, passed to
 \code{\link[ggplot2:geom_abline]{ggplot2::geom_vline()}}.}
+
+\item{.df}{a data frame produced by \code{tidy_smd()}}
 }
 \value{
 a list of \code{geoms} or a \code{ggplot}
