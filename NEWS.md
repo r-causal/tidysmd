@@ -1,5 +1,7 @@
 # tidysmd (development version)
 
+* Added `geom_love()` (#5)
+
 # tidysmd 0.1.1
 
 * Fixed imports issue related to tidyselect
