@@ -89,7 +89,28 @@ plot_df <- tidy_smd(
   .wts = starts_with("w_")
 )
 
-ggplot(plot_df) + geom_love()
+ggplot(
+    plot_df,
+    aes(
+        x = abs(smd),
+        y = variable,
+        group = weights,
+        color = weights,
+        fill = weights
+    )
+) +
+    geom_love()
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+
+You can also use the quickplotting function `love_plot()`, if you
+prefer:
+
+``` r
+love_plot(plot_df) + 
+  theme_minimal(14) + 
+  ylab(NULL)
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
