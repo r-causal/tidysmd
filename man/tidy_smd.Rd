@@ -12,7 +12,8 @@ tidy_smd(
   include_unweighted = TRUE,
   na.rm = FALSE,
   gref = 1L,
-  std.error = FALSE
+  std.error = FALSE,
+  dummy_variable = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,12 @@ group. Defaults to \code{1}.}
 
 \item{std.error}{Logical indicator for computing standard errors using
 \code{\link[smd]{compute_smd_var}}. Defaults to \code{FALSE}.}
+
+\item{dummy_variable}{Logical. Transform categorical variables to dummy
+variables? By default, \link[smd:smd]{smd::smd} uses a summary value based on the
+Mahalanobis distance distance to approximate the SMD of categorical
+variables. An alternative approach is to transform categorical variables to
+a set of dummy variables.}
 }
 \value{
 a tibble

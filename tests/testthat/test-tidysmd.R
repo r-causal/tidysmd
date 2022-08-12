@@ -380,3 +380,16 @@ test_that("groups with more than two levels return correctly", {
     smd::smd(mtcars$hp, mtcars$cyl)$term
   )
 })
+
+
+test_that("tidy_smd() works with `dummy_variable = TRUE`", {
+  .smds <- tidy_smd(
+    nhefs_weights,
+    c(age, race, education),
+    .group = qsmk,
+    .wts = w_ate,
+    dummy_variable = TRUE
+  )
+
+  expect_tidy_smd_tbl(.smds, .rows = 12)
+})
