@@ -4,5 +4,6 @@ globalVariables(c(
   "smd",
   "estimate",
   "smd_results",
-  "term"
+  "term",
+  "(Intercept)"
 ))
