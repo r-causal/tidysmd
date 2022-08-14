@@ -14,11 +14,11 @@
 #' @param .wts Variables to use for weighting the SMD calculation
 #' @param include_unweighted Logical. If using `.wts`, also calculate the
 #'   unweighted SMD?
-#' @param dummy_variable Logical. Transform categorical variables to dummy
-#'   variables? By default, [smd::smd] uses a summary value based on the
-#'   Mahalanobis distance distance to approximate the SMD of categorical
-#'   variables. An alternative approach is to transform categorical variables to
-#'   a set of dummy variables.
+#' @param make_dummy_vars Logical. Transform categorical variables to dummy
+#'   variables using `model.matrix()`? By default, [smd::smd] uses a summary
+#'   value based on the Mahalanobis distance distance to approximate the SMD of
+#'   categorical variables. An alternative approach is to transform categorical
+#'   variables to a set of dummy variables.
 #' @inheritParams smd::smd
 #'
 #' @return a tibble
@@ -35,7 +35,9 @@
 #'   .group = qsmk,
 #'   .wts = c(w_ate, w_att, w_atm)
 #' )
-tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_unweighted = TRUE, na.rm = FALSE, gref = 1L, std.error = FALSE, dummy_variable = FALSE) {
+tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_unweighted = TRUE,
+                     na.rm = FALSE, gref = 1L, std.error = FALSE,
+                     make_dummy_vars = FALSE) {
   # check_weights(.wt)
   .df <- dplyr::as_tibble(.df)
   .vars <- enquo(.vars)
@@ -44,7 +46,7 @@ tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_unweighted = TRUE,
 
   .df <- dplyr::select(.df, !!.vars, !!.group, !!.wts)
 
-  if (isTRUE(dummy_variable)) {
+  if (isTRUE(make_dummy_vars)) {
     .df <- model_matrix(.df)
   }
 
