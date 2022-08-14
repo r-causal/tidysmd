@@ -73,7 +73,8 @@ different types of weights.</p>
 <span>  include_unweighted <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  na.rm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  gref <span class="op">=</span> <span class="fl">1L</span>,</span>
-<span>  std.error <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  std.error <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  make_dummy_vars <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -112,6 +113,14 @@ group. Defaults to <code>1</code>.</p></dd>
 <dt>std.error</dt>
 <dd><p>Logical indicator for computing standard errors using
 <code><a href="https://rdrr.io/pkg/smd/man/compute_smd_var.html" class="external-link">compute_smd_var</a></code>. Defaults to <code>FALSE</code>.</p></dd>
+
+
+<dt>make_dummy_vars</dt>
+<dd><p>Logical. Transform categorical variables to dummy
+variables using <code><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix()</a></code>? By default, <a href="https://rdrr.io/pkg/smd/man/smd.html" class="external-link">smd::smd</a> uses a summary
+value based on the Mahalanobis distance distance to approximate the SMD of
+categorical variables. An alternative approach is to transform categorical
+variables to a set of dummy variables.</p></dd>
 
 </dl></div>
     <div id="value">
