@@ -18,9 +18,9 @@ test_that("multiplication works", {
     aes(
       x = abs(.data$smd),
       y = .data$variable,
-      group = .data$weights,
-      color = .data$weights,
-      fill = .data$weights
+      group = .data$method,
+      color = .data$method,
+      fill = .data$method
     )
   ) +
     geom_love()

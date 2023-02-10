@@ -39,7 +39,7 @@ Alternatively, you can install the development version of tidysmd from [GitHub](
 devtools::install_github("malcolmbarrett/tidysmd")
 ```
 
-## Example
+## Example: Weighting
 
 `tidy_smd()` supports both unweighted SMDs and weighted SMDs. 
 
@@ -71,16 +71,16 @@ plot_df <- tidy_smd(
 )
 
 ggplot(
-    plot_df,
-    aes(
-        x = abs(smd),
-        y = variable,
-        group = weights,
-        color = weights,
-        fill = weights
-    )
+  plot_df,
+  aes(
+    x = abs(smd),
+    y = variable,
+    group = method,
+    color = method,
+    fill = method
+  )
 ) +
-    geom_love()
+  geom_love()
 ```
 
 You can also use the quick-plotting function `love_plot()`, if you prefer:
@@ -90,5 +90,60 @@ love_plot(plot_df) +
   theme_minimal(14) + 
   ylab(NULL)
 ```
+
+## Example: Matching
+
+tidysmd also has support for working with matched datasets. Consider these two objects from the [MatchIt]() documentation:
+
+```{r}
+library(MatchIt)
+# Default: 1:1 NN PS matching w/o replacement
+m.out1 <- matchit(treat ~ age + educ + race + nodegree +
+                   married + re74 + re75, data = lalonde)
+
+# 1:1 NN Mahalanobis distance matching w/ replacement and
+# exact matching on married and race
+m.out2 <- matchit(treat ~ age + educ + race + nodegree +
+                   married + re74 + re75, data = lalonde,
+                   distance = "mahalanobis", replace = TRUE,
+                  exact = ~ married + race)
+```
+
+One option is to just look at the matched dataset with tidysmd:
+
+```{r}
+matched_data <- get_matches(m.out1)
+
+match_smd <- tidy_smd(
+  matched_data,
+  c(age, educ, race, nodegree, married, re74, re75), 
+  .group = treat
+)
+
+love_plot(match_smd)
+```
+
+The downside here is that you can't compare multiple matching strategies to the observed dataset; the label on the plot is also wrong. tidysmd comes with a helper function, `bind_matches()`, that creates a dataset more appropriate for this task:
+
+```{r}
+matches <- bind_matches(lalonde, m.out1, m.out2)
+head(matches)
+```
+
+`matches` includes an binary variable for each `matchit` object which indicates if the row was included in the match or not. Since downweighting to 0 is equivalent to filtering the datasets to the matches, we can more easily compare multiple matched datasets with `.wts`:
+
+```{r}
+many_matched_smds <- tidy_smd(
+  matches,
+  c(age, educ, race, nodegree, married, re74, re75), 
+  .group = treat, 
+  .wts = c(m.out1, m.out2)
+) 
+
+love_plot(many_matched_smds)
+```
+
+
+
 
 
