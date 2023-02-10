@@ -6,24 +6,30 @@
 \title{Create a Love plot}
 \usage{
 geom_love(
-  line_size = 0.8,
+  linewidth = 0.8,
+  line_size = NULL,
   point_size = 1.85,
   vline_xintercept = 0.1,
   vline_color = "grey70",
-  vline_size = 0.6
+  vlinewidth = 0.6,
+  vline_size = NULL
 )
 
 love_plot(
   .df,
-  line_size = 0.8,
+  linewidth = 0.8,
+  line_size = NULL,
   point_size = 1.85,
   vline_xintercept = 0.1,
   vline_color = "grey70",
-  vline_size = 0.6
+  vlinewidth = 0.6,
+  vline_size = NULL
 )
 }
 \arguments{
-\item{line_size}{The line size, passed to \code{\link[ggplot2:geom_path]{ggplot2::geom_line()}}.}
+\item{linewidth}{The line size, passed to \code{\link[ggplot2:geom_path]{ggplot2::geom_line()}}.}
+
+\item{line_size}{Deprecated. Please use \code{linewidth}.}
 
 \item{point_size}{The point size, passed to \code{\link[ggplot2:geom_point]{ggplot2::geom_point()}}.}
 
@@ -32,8 +38,10 @@ love_plot(
 \item{vline_color}{The vertical line color, passed to
 \code{\link[ggplot2:geom_abline]{ggplot2::geom_vline()}}.}
 
-\item{vline_size}{The vertical line size, passed to
+\item{vlinewidth}{The vertical line size, passed to
 \code{\link[ggplot2:geom_abline]{ggplot2::geom_vline()}}.}
+
+\item{vline_size}{Deprecated. Please use \code{vlinewidth}.}
 
 \item{.df}{a data frame produced by \code{tidy_smd()}}
 }
@@ -69,9 +77,9 @@ ggplot(
   aes(
     x = abs(smd),
     y = variable,
-    group = weights,
-    color = weights,
-    fill = weights
+    group = method,
+    color = method,
+    fill = method
   )
 ) +
   geom_love()

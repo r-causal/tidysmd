@@ -9,7 +9,8 @@ tidy_smd(
   .vars,
   .group,
   .wts = NULL,
-  include_unweighted = TRUE,
+  include_observed = TRUE,
+  include_unweighted = NULL,
   na.rm = FALSE,
   gref = 1L,
   std.error = FALSE,
@@ -23,10 +24,14 @@ tidy_smd(
 
 \item{.group}{Grouping variable}
 
-\item{.wts}{Variables to use for weighting the SMD calculation}
+\item{.wts}{Variables to use for weighting the SMD calculation. These can be,
+for instance, propensity score weights or a binary indicator signaling
+whether or not a participant was included in a matching algorithm.}
 
-\item{include_unweighted}{Logical. If using \code{.wts}, also calculate the
+\item{include_observed}{Logical. If using \code{.wts}, also calculate the
 unweighted SMD?}
+
+\item{include_unweighted}{Deprecated. Please use \code{include_observed}.}
 
 \item{na.rm}{Remove \code{NA} values from \code{x}? Defaults to \code{FALSE}.}
 
@@ -49,10 +54,15 @@ a tibble
 \code{tidy_smd()} calculates the standardized mean difference (SMD) for variables
 in a dataset between groups. Optionally, you may also calculate weighted
 SMDs. \code{tidy_smd()} wraps \code{smd::smd()}, returning a tidy dataframe with the
-columns \code{variable}, \code{weights}, and \code{smd}, as well as fourth column the
+columns \code{variable}, \code{method}, and \code{smd}, as well as fourth column the
 contains the level of \code{.group} the SMD represents. You may also supply
 multiple weights to calculate multiple weighted SMDs, useful when comparing
-different types of weights.
+different types of weights. Additionally, the \code{.wts} argument supports
+matched datasets where the variable supplied to \code{.wts} is an binary variable
+indicating whether the row was included in the match. If you're using
+MatchIt, the helper function \code{\link[=bind_matches]{bind_matches()}} will bind these indicators to
+the original dataset,  making it easier to compare across matching
+specifications.
 }
 \examples{
 

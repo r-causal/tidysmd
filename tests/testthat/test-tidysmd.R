@@ -2,28 +2,28 @@ expect_tidy_smd_tbl <- function(.smds, .rows, .cols = 4, .group = "qsmk") {
   expect_s3_class(.smds, c("tbl_df", "tbl", "data.frame"))
   expect_length(.smds, .cols)
   expect_equal(nrow(.smds), .rows)
-  expect_named(.smds , c("variable", "weights", .group, "smd"))
+  expect_named(.smds , c("variable", "method", .group, "smd"))
 }
 
-pull_smd <- function(.smds, .v, .w = "unweighted") {
-  .smds <- dplyr::filter(.smds, variable == .v, weights == .w)
+pull_smd <- function(.smds, .v, .w = "observed") {
+  .smds <- dplyr::filter(.smds, variable == .v, method == .w)
   .smds[["smd"]]
 }
 
-pull_term <- function(.smds, .v, .term = "cyl", .w = "unweighted") {
-  .smds <- dplyr::filter(.smds, variable == .v, weights == .w)
+pull_term <- function(.smds, .v, .term = "cyl", .w = "observed") {
+  .smds <- dplyr::filter(.smds, variable == .v, method == .w)
   .smds[[.term]]
 }
 
-pull_std.error <- function(.smds, .v, .w = "unweighted") {
-  .smds <- dplyr::filter(.smds, variable == .v, weights == .w)
+pull_std.error <- function(.smds, .v, .w = "observed") {
+  .smds <- dplyr::filter(.smds, variable == .v, method == .w)
   .smds[["std.error"]]
 }
 
 test_that("tidy_smd() works without weights", {
   expect_error(
-    tidy_smd(nhefs_weights, age, .group = qsmk, include_unweighted = FALSE),
-    "Must specify `.wts` if `include_unweighted = FALSE`"
+    tidy_smd(nhefs_weights, age, .group = qsmk, include_observed = FALSE),
+    "Must specify `.wts` if `include_observed = FALSE`"
   )
 
   .smds <- tidy_smd(nhefs_weights, c(age, education, race), .group = qsmk)
@@ -85,13 +85,13 @@ test_that("tidy_smd() works with weights", {
   )
 })
 
-test_that("tidy_smd() works with weights and no unweighted", {
+test_that("tidy_smd() works with weights and no observed", {
   .smds <- tidy_smd(
     nhefs_weights,
     c(age, race, education),
     .group = qsmk,
     .wts = w_ate,
-    include_unweighted = FALSE
+    include_observed = FALSE
   )
 
   expect_tidy_smd_tbl(.smds, .rows = 3)

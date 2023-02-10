@@ -20,10 +20,12 @@ Imports:
     smd,
     stats,
     tidyr,
-    tidyselect
+    tidyselect,
+    utils
 Suggests: 
     covr,
     ggplot2,
+    MatchIt,
     spelling,
     testthat (>= 3.0.0),
     vdiffr
@@ -32,4 +34,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
