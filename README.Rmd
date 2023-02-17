@@ -93,7 +93,7 @@ love_plot(plot_df) +
 
 ## Example: Matching
 
-tidysmd also has support for working with matched datasets. Consider these two objects from the [MatchIt]() documentation:
+tidysmd also has support for working with matched datasets. Consider these two objects from the [MatchIt](https://github.com/kosukeimai/MatchIt) documentation:
 
 ```{r}
 library(MatchIt)

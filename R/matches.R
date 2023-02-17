@@ -12,21 +12,21 @@
 #' @return `.df` with addition columns for every element of `...`
 #' @export
 bind_matches <- function(.df, ...) {
-  rlang::check_installed("MatchIt")
   .matches <- rlang::dots_list(..., .named = TRUE)
   indicators <- purrr::map_dfc(.matches, get_match_indicator)
   dplyr::bind_cols(.df, indicators)
 }
 
-get_match_indicator <- function(.matchit) {
-  assert_is_matchit(.matchit)
-  .matchit$weights
+
+get_match_indicator <- function(.match) {
+  UseMethod("get_match_indicator")
 }
 
-assert_is_matchit <- function(.matchit) {
-  if (!inherits(.matchit, "matchit")) {
-    abort("Objects in `.matches` must be of class `matchit`.")
-  }
+#' @exportS3Method
+get_match_indicator.matchit <- function(.match) {
+  .match$weights
+}
 
-  invisible(TRUE)
+get_match_indicator.default <- function(.match) {
+  abort(paste("Objects of class", class(.match), "not supported"))
 }
