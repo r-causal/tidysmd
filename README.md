@@ -14,7 +14,7 @@ status](https://www.r-pkg.org/badges/version/tidysmd)](https://CRAN.R-project.or
 
 **Note: tidysmd has been subsumed under the [halfmoon
 package](https://r-causal.github.io/halfmoon/); all the functions in
-this pacakge are re-exported in halfmoon. While tidysmd will remain on
+this package are re-exported in halfmoon. While tidysmd will remain on
 CRAN, we recommend using the halfmoon package instead**
 
 The goal of tidysmd is to easily create tidy data frames of SMDs.
