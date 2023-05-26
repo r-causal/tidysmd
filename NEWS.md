@@ -1,3 +1,5 @@
+# tidysmd (development version)
+
 # tidysmd 0.2.0
 * Added a `make_dummy_vars` argument to `tidy_smd()` to transform categorical variables to dummy variables prior to calculating the SMD (#7)
 * Added `geom_love()` (#5)
