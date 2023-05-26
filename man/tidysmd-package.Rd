@@ -11,9 +11,9 @@ Tidy standardized mean differences ('SMDs'). 'tidysmd' uses the 'smd' package to
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/malcolmbarrett/tidysmd}
-  \item \url{https://malcolmbarrett.github.io/tidysmd/}
-  \item Report bugs at \url{https://github.com/malcolmbarrett/tidysmd/issues}
+  \item \url{https://github.com/r-causal/tidysmd}
+  \item \url{https://r-causal.github.io/tidysmd/}
+  \item Report bugs at \url{https://github.com/r-causal/tidysmd/issues}
 }
 
 }

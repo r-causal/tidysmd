@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/malcolmbarrett/tidysmd/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/malcolmbarrett/tidysmd/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/r-causal/tidysmd/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-causal/tidysmd/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/malcolmbarrett/tidysmd/branch/main/graph/badge.svg)](https://app.codecov.io/gh/malcolmbarrett/tidysmd?branch=main)
 [![CRAN
