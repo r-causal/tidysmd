@@ -12,6 +12,11 @@ coverage](https://codecov.io/gh/malcolmbarrett/tidysmd/branch/main/graph/badge.s
 status](https://www.r-pkg.org/badges/version/tidysmd)](https://CRAN.R-project.org/package=tidysmd)
 <!-- badges: end -->
 
+**Note: tidysmd hasn’t been subsumed under the [halfmoon
+package](https://r-causal.github.io/halfmoon/). While tidysmd will
+remain on CRAN, we recommend using the functions here in the halfmoon
+package instead**
+
 The goal of tidysmd is to easily create tidy data frames of SMDs.
 tidysmd wraps the smd package to easily calculate SMDs across many
 variables and using several weights in order to easily compare different
