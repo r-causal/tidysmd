@@ -21,7 +21,8 @@ Imports:
     stats,
     tidyr,
     tidyselect,
-    utils
+    utils,
+    vctrs
 Suggests: 
     covr,
     ggplot2,
@@ -30,11 +31,11 @@ Suggests:
     spelling,
     testthat (>= 3.0.0),
     vdiffr
+Remotes: 
+    r-causal/propensity
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
-Remotes: 
-    r-causal/propensity
