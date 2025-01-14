@@ -2,6 +2,8 @@
 library(tidyverse)
 library(broom)
 library(causaldata)
+library(propensity)
+options(propensity.quiet = TRUE)
 propensity_model <- glm(
   qsmk ~ sex +
     race + age + I(age^2) + education +
@@ -16,16 +18,11 @@ nhefs_weights <- propensity_model %>%
   augment(type.predict = "response", data = nhefs_complete) %>%
   mutate(
     wts = 1 / ifelse(qsmk == 0, 1 - .fitted, .fitted),
-    w_ate = (qsmk / .fitted) +
-      ((1 - qsmk) / (1 - .fitted)),
-    w_att = ((.fitted * qsmk) / .fitted) +
-      ((.fitted * (1 - qsmk)) / (1 - .fitted)),
-    w_atc = (((1 - .fitted) * qsmk) / .fitted) +
-      (((1 - .fitted) * (1 - qsmk)) / (1 - .fitted)),
-    w_atm = pmin(.fitted, 1 - .fitted) /
-      (qsmk * .fitted + (1 - qsmk) * (1 - .fitted)),
-    w_ato = (1 - .fitted) * qsmk +
-      .fitted * (1 - qsmk)
+    w_ate = wt_ate(.fitted, qsmk),
+    w_att = wt_att(.fitted, qsmk),
+    w_atc = wt_atu(.fitted, qsmk),
+    w_atm = wt_atm(.fitted, qsmk),
+    w_ato = wt_ato(.fitted, qsmk)
   ) %>%
   select(
     qsmk,

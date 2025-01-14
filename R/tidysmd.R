@@ -131,7 +131,7 @@ tidy_weighted_smd <- function(.df, .group, .wts, .all_wts, na.rm = FALSE, gref =
       .df,
       dplyr::across(
         c(-!!.group, -!!.all_wts),
-        ~ smd::smd(.x, !!.group, w = !!.wts_sym, na.rm = na.rm, gref = gref, std.error = std.error)
+        ~ smd::smd(.x, !!.group, w = as.double(!!.wts_sym), na.rm = na.rm, gref = gref, std.error = std.error)
       )
     )
   } else {
@@ -139,7 +139,7 @@ tidy_weighted_smd <- function(.df, .group, .wts, .all_wts, na.rm = FALSE, gref =
       .df,
       dplyr::across(
         c(-!!.group, -!!.all_wts),
-        ~ smd::smd(.x, !!.group, w = !!.wts_sym, na.rm = na.rm, gref = gref, std.error = std.error)
+        ~ smd::smd(.x, !!.group, w = as.double(!!.wts_sym), na.rm = na.rm, gref = gref, std.error = std.error)
       )
     )
   }
@@ -147,6 +147,11 @@ tidy_weighted_smd <- function(.df, .group, .wts, .all_wts, na.rm = FALSE, gref =
   .df <- pivot_smd(.df, .wts)
 
   dplyr::rename(.df, {{ .group }} := term)
+}
+
+#' @export
+as.double.psw <- function(x, ...) {
+  vctrs::vec_data(x)
 }
 
 pivot_smd <- function(.df, weights_col) {
