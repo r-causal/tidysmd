@@ -69,19 +69,21 @@ test_that("tidy_smd() works with weights", {
     smd::smd(nhefs_weights$race, nhefs_weights$qsmk)$estimate
   )
 
+  wts <- as.double(nhefs_weights$w_ate)
+
   expect_equal(
     pull_smd(.smds, "age", "w_ate"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, wts)$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_ate"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, wts)$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_ate"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, wts)$estimate
   )
 })
 
@@ -96,19 +98,21 @@ test_that("tidy_smd() works with weights and no observed", {
 
   expect_tidy_smd_tbl(.smds, .rows = 3)
 
+  wts <- as.double(nhefs_weights$w_ate)
+
   expect_equal(
     pull_smd(.smds, "age", "w_ate"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, wts)$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_ate"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, wts)$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_ate"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, wts)$estimate
   )
 })
 
@@ -139,47 +143,47 @@ test_that("tidy_smd() works with many weights", {
 
   expect_equal(
     pull_smd(.smds, "age", "w_ate"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_ate"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_ate"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "age", "w_att"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_att)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_att"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_att)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_att"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_att)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "age", "w_atm"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atm)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_atm"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atm)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_atm"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atm)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double())$estimate
   )
 })
 
@@ -210,77 +214,77 @@ test_that("tidy_smd() works with tidyselect", {
 
   expect_equal(
     pull_smd(.smds, "age", "w_ate"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_ate"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_ate"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "age", "w_att"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_att)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_att"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_att)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_att"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_att)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "age", "w_atm"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atm)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_atm"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atm)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_atm"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atm)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "age", "w_atc"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atc)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atc |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_atc"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atc)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atc |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_atc"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atc)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atc |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "age", "w_ato"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ato)$estimate
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ato |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "race", "w_ato"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ato)$estimate
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ato |> as.double())$estimate
   )
 
   expect_equal(
     pull_smd(.smds, "education", "w_ato"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ato)$estimate
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ato |> as.double())$estimate
   )
 })
 
@@ -312,47 +316,47 @@ test_that("standard errors return correctly", {
 
   expect_equal(
     pull_std.error(.smds, "age", "w_ate"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "race", "w_ate"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "education", "w_ate"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_ate |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "age", "w_att"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_att, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "race", "w_att"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_att, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "education", "w_att"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_att, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_att |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "age", "w_atm"),
-    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atm, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$age, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "race", "w_atm"),
-    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atm, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$race, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double(), std.error = TRUE)$std.error
   )
 
   expect_equal(
     pull_std.error(.smds, "education", "w_atm"),
-    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atm, std.error = TRUE)$std.error
+    smd::smd(nhefs_weights$education, nhefs_weights$qsmk, nhefs_weights$w_atm |> as.double(), std.error = TRUE)$std.error
   )
 })
 
