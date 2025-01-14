@@ -1,42 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/404.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/reference/bind_matches.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/reference/geom_love.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/reference/nhefs_weights.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/reference/tidy_smd.html</loc>
-  </url>
-  <url>
-    <loc>https://r-causal.github.io/tidysmd/reference/tidysmd-package.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://r-causal.github.io/tidysmd/404.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/LICENSE-text.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/LICENSE.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/authors.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/index.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/news/index.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/reference/bind_matches.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/reference/geom_love.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/reference/index.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/reference/nhefs_weights.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/reference/reexports.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/reference/tidy_smd.html</loc></url>
+<url><loc>https://r-causal.github.io/tidysmd/reference/tidysmd-package.html</loc></url>
 </urlset>
+
