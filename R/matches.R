@@ -22,11 +22,12 @@ get_match_indicator <- function(.match) {
   UseMethod("get_match_indicator")
 }
 
-#' @exportS3Method
+#' @export
 get_match_indicator.matchit <- function(.match) {
   .match$weights
 }
 
+#' @export
 get_match_indicator.default <- function(.match) {
   abort(paste("Objects of class", class(.match), "not supported"))
 }
