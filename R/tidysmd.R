@@ -54,7 +54,7 @@ tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_observed = TRUE, i
   # check_weights(.wt)
   .df <- dplyr::as_tibble(.df)
   .vars <- enquo(.vars)
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   .wts <- enquo(.wts)
 
   .df <- dplyr::select(.df, !!.vars, !!.group, !!.wts)
@@ -83,7 +83,7 @@ tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_observed = TRUE, i
 }
 
 tidy_observed_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   .wts <- enquo(.wts)
 
   # `summarize()` with multiple rows was  deprecated in dplyr 1.1.0
@@ -111,7 +111,7 @@ tidy_observed_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.e
 }
 
 map_tidy_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   wt_cols <- enquo(.wts)
   wt_vars <- names(tidyselect::eval_select(wt_cols, .df))
 
@@ -120,7 +120,7 @@ map_tidy_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.error 
 
 
 tidy_weighted_smd <- function(.df, .group, .wts, .all_wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   .all_wts <- enquo(.all_wts)
   force(.wts)
   .wts_sym <- ensym(.wts)
