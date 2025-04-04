@@ -14,11 +14,13 @@
 #' specifications.
 #'
 #' @param .df A data frame
-#' @param .vars Variables for which to calculate SMD
-#' @param .group Grouping variable
+#' @param .vars Variables for which to calculate SMD. Can be unquoted (`x`) or
+#'   quoted (`"x"`).
+#' @param .group Grouping variable. Can be unquoted (`x`) or quoted (`"x"`).
 #' @param .wts Variables to use for weighting the SMD calculation. These can be,
 #'   for instance, propensity score weights or a binary indicator signaling
-#'   whether or not a participant was included in a matching algorithm.
+#'   whether or not a participant was included in a matching algorithm. Can be
+#'   unquoted (`x`) or quoted (`"x"`).
 #' @param include_observed Logical. If using `.wts`, also calculate the
 #'   unweighted SMD?
 #' @param include_unweighted Deprecated. Please use `include_observed`.
