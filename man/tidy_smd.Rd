@@ -20,13 +20,15 @@ tidy_smd(
 \arguments{
 \item{.df}{A data frame}
 
-\item{.vars}{Variables for which to calculate SMD}
+\item{.vars}{Variables for which to calculate SMD. Can be unquoted (\code{x}) or
+quoted (\code{"x"}).}
 
-\item{.group}{Grouping variable}
+\item{.group}{Grouping variable. Can be unquoted (\code{x}) or quoted (\code{"x"}).}
 
 \item{.wts}{Variables to use for weighting the SMD calculation. These can be,
 for instance, propensity score weights or a binary indicator signaling
-whether or not a participant was included in a matching algorithm.}
+whether or not a participant was included in a matching algorithm. Can be
+unquoted (\code{x}) or quoted (\code{"x"}).}
 
 \item{include_observed}{Logical. If using \code{.wts}, also calculate the
 unweighted SMD?}

@@ -14,11 +14,13 @@
 #' specifications.
 #'
 #' @param .df A data frame
-#' @param .vars Variables for which to calculate SMD
-#' @param .group Grouping variable
+#' @param .vars Variables for which to calculate SMD. Can be unquoted (`x`) or
+#'   quoted (`"x"`).
+#' @param .group Grouping variable. Can be unquoted (`x`) or quoted (`"x"`).
 #' @param .wts Variables to use for weighting the SMD calculation. These can be,
 #'   for instance, propensity score weights or a binary indicator signaling
-#'   whether or not a participant was included in a matching algorithm.
+#'   whether or not a participant was included in a matching algorithm. Can be
+#'   unquoted (`x`) or quoted (`"x"`).
 #' @param include_observed Logical. If using `.wts`, also calculate the
 #'   unweighted SMD?
 #' @param include_unweighted Deprecated. Please use `include_observed`.
@@ -54,7 +56,7 @@ tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_observed = TRUE, i
   # check_weights(.wt)
   .df <- dplyr::as_tibble(.df)
   .vars <- enquo(.vars)
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   .wts <- enquo(.wts)
 
   .df <- dplyr::select(.df, !!.vars, !!.group, !!.wts)
@@ -83,7 +85,7 @@ tidy_smd <- function(.df, .vars, .group, .wts = NULL, include_observed = TRUE, i
 }
 
 tidy_observed_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   .wts <- enquo(.wts)
 
   # `summarize()` with multiple rows was  deprecated in dplyr 1.1.0
@@ -111,7 +113,7 @@ tidy_observed_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.e
 }
 
 map_tidy_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   wt_cols <- enquo(.wts)
   wt_vars <- names(tidyselect::eval_select(wt_cols, .df))
 
@@ -120,7 +122,7 @@ map_tidy_smd <- function(.df, .group, .wts, na.rm = FALSE, gref = 1L, std.error 
 
 
 tidy_weighted_smd <- function(.df, .group, .wts, .all_wts, na.rm = FALSE, gref = 1L, std.error = FALSE) {
-  .group <- enquo(.group)
+  .group <- ensym(.group)
   .all_wts <- enquo(.all_wts)
   force(.wts)
   .wts_sym <- ensym(.wts)

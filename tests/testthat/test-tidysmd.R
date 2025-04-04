@@ -397,3 +397,14 @@ test_that("tidy_smd() works with `make_dummy_vars = TRUE`", {
 
   expect_tidy_smd_tbl(.smds, .rows = 12)
 })
+
+test_that("tidy_smd() works with quoted variables", {
+  .smds <- tidy_smd(
+    nhefs_weights,
+    c("age", "race", "education"),
+    .group = "qsmk",
+    .wts = "w_ate"
+  )
+
+  expect_tidy_smd_tbl(.smds, .rows = 6)
+})
