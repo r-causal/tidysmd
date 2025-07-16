@@ -151,11 +151,6 @@ tidy_weighted_smd <- function(.df, .group, .wts, .all_wts, na.rm = FALSE, gref =
   dplyr::rename(.df, {{ .group }} := term)
 }
 
-#' @export
-as.double.psw <- function(x, ...) {
-  vctrs::vec_data(x)
-}
-
 pivot_smd <- function(.df, weights_col) {
   .df <- tidyr::pivot_longer(
     .df,
