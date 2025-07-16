@@ -5,11 +5,20 @@ library(causaldata)
 library(propensity)
 options(propensity.quiet = TRUE)
 propensity_model <- glm(
-  qsmk ~ sex +
-    race + age + I(age^2) + education +
-    smokeintensity + I(smokeintensity^2) +
-    smokeyrs + I(smokeyrs^2) + exercise + active +
-    wt71 + I(wt71^2),
+  qsmk ~
+    sex +
+      race +
+      age +
+      I(age^2) +
+      education +
+      smokeintensity +
+      I(smokeintensity^2) +
+      smokeyrs +
+      I(smokeyrs^2) +
+      exercise +
+      active +
+      wt71 +
+      I(wt71^2),
   family = binomial(),
   data = nhefs_complete
 )

@@ -48,7 +48,15 @@
 #' ) +
 #'   geom_love()
 #'
-geom_love <- function(linewidth = .8, line_size = NULL, point_size = 1.85, vline_xintercept = 0.1, vline_color = "grey70", vlinewidth = 0.6, vline_size = NULL) {
+geom_love <- function(
+  linewidth = .8,
+  line_size = NULL,
+  point_size = 1.85,
+  vline_xintercept = 0.1,
+  vline_color = "grey70",
+  vlinewidth = 0.6,
+  vline_size = NULL
+) {
   check_installed("ggplot2")
   if (!is.null(line_size)) {
     warn("`line_size` is deprecated. Please use `linewidth`")
@@ -87,7 +95,16 @@ geom_love <- function(linewidth = .8, line_size = NULL, point_size = 1.85, vline
 #' @export
 #' @rdname geom_love
 #' @param .df a data frame produced by `tidy_smd()`
-love_plot <- function(.df, linewidth = .8, line_size = NULL, point_size = 1.85, vline_xintercept = 0.1, vline_color = "grey70", vlinewidth = 0.6, vline_size = NULL) {
+love_plot <- function(
+  .df,
+  linewidth = .8,
+  line_size = NULL,
+  point_size = 1.85,
+  vline_xintercept = 0.1,
+  vline_color = "grey70",
+  vlinewidth = 0.6,
+  vline_size = NULL
+) {
   check_installed("ggplot2")
   if (!is.null(line_size)) {
     warn("`line_size` is deprecated. Please use `linewidth`")
