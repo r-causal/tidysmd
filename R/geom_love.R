@@ -73,7 +73,6 @@ geom_love <- function(
   # `size` was deprecated for `geom_line()` in ggplot2 3.4.0
   if (packageVersion("ggplot2") >= "3.4.0") {
     vline_geom <- ggplot2::geom_vline(
-      data = data,
       xintercept = vline_xintercept,
       color = vline_color,
       linewidth = vlinewidth
@@ -85,7 +84,6 @@ geom_love <- function(
     )
   } else {
     vline_geom <- ggplot2::geom_vline(
-      data = data,
       xintercept = vline_xintercept,
       color = vline_color,
       size = vlinewidth
