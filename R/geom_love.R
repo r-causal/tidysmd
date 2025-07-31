@@ -11,6 +11,7 @@
 #' wraps `geom_love()`. For more complex Love plots, we recommend using ggplot2
 #' directly.
 #'
+#' @inheritParams ggplot2::geom_point
 #' @param linewidth The line size, passed to [`ggplot2::geom_line()`].
 #' @param line_size Deprecated. Please use `linewidth`.
 #' @param point_size The point size, passed to [`ggplot2::geom_point()`].
@@ -49,6 +50,7 @@
 #'   geom_love()
 #'
 geom_love <- function(
+  data = NULL,
   linewidth = .8,
   line_size = NULL,
   point_size = 1.85,
@@ -71,24 +73,34 @@ geom_love <- function(
   # `size` was deprecated for `geom_line()` in ggplot2 3.4.0
   if (packageVersion("ggplot2") >= "3.4.0") {
     vline_geom <- ggplot2::geom_vline(
+      data = data,
       xintercept = vline_xintercept,
       color = vline_color,
       linewidth = vlinewidth
     )
-    line_geom <- ggplot2::geom_line(orientation = "y", linewidth = linewidth)
+    line_geom <- ggplot2::geom_line(
+      data = data,
+      orientation = "y",
+      linewidth = linewidth
+    )
   } else {
     vline_geom <- ggplot2::geom_vline(
+      data = data,
       xintercept = vline_xintercept,
       color = vline_color,
       size = vlinewidth
     )
-    line_geom <- ggplot2::geom_line(orientation = "y", size = linewidth)
+    line_geom <- ggplot2::geom_line(
+      data = data,
+      orientation = "y",
+      size = linewidth
+    )
   }
 
   list(
     vline_geom,
     line_geom,
-    ggplot2::geom_point(size = point_size)
+    ggplot2::geom_point(data = data, size = point_size)
   )
 }
 

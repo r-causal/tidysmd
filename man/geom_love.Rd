@@ -6,6 +6,7 @@
 \title{Create a Love plot}
 \usage{
 geom_love(
+  data = NULL,
   linewidth = 0.8,
   line_size = NULL,
   point_size = 1.85,
@@ -27,6 +28,21 @@ love_plot(
 )
 }
 \arguments{
+\item{data}{The data to be displayed in this layer. There are three
+options:
+
+If \code{NULL}, the default, the data is inherited from the plot
+data as specified in the call to \code{\link[ggplot2:ggplot]{ggplot()}}.
+
+A \code{data.frame}, or other object, will override the plot
+data. All objects will be fortified to produce a data frame. See
+\code{\link[ggplot2:fortify]{fortify()}} for which variables will be created.
+
+A \code{function} will be called with a single argument,
+the plot data. The return value must be a \code{data.frame}, and
+will be used as the layer data. A \code{function} can be created
+from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
+
 \item{linewidth}{The line size, passed to \code{\link[ggplot2:geom_path]{ggplot2::geom_line()}}.}
 
 \item{line_size}{Deprecated. Please use \code{linewidth}.}
