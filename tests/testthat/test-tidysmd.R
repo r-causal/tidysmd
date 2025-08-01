@@ -69,7 +69,7 @@ test_that("tidy_smd() works with weights", {
     smd::smd(nhefs_weights$race, nhefs_weights$qsmk)$estimate
   )
 
-  wts <- as.double(nhefs_weights$w_ate)
+  wts <- nhefs_weights$w_ate |> vctrs::vec_data()
 
   expect_equal(
     pull_smd(.smds, "age", "w_ate"),
@@ -98,7 +98,7 @@ test_that("tidy_smd() works with weights and no observed", {
 
   expect_tidy_smd_tbl(.smds, .rows = 3)
 
-  wts <- as.double(nhefs_weights$w_ate)
+  wts <- nhefs_weights$w_ate |> vctrs::vec_data()
 
   expect_equal(
     pull_smd(.smds, "age", "w_ate"),
@@ -146,7 +146,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double()
+      nhefs_weights$w_ate |> vctrs::vec_data()
     )$estimate
   )
 
@@ -155,7 +155,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double()
+      nhefs_weights$w_ate |> vctrs::vec_data()
     )$estimate
   )
 
@@ -164,7 +164,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double()
+      nhefs_weights$w_ate |> vctrs::vec_data()
     )$estimate
   )
 
@@ -173,7 +173,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double()
+      nhefs_weights$w_att |> vctrs::vec_data()
     )$estimate
   )
 
@@ -182,7 +182,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double()
+      nhefs_weights$w_att |> vctrs::vec_data()
     )$estimate
   )
 
@@ -191,7 +191,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double()
+      nhefs_weights$w_att |> vctrs::vec_data()
     )$estimate
   )
 
@@ -200,7 +200,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double()
+      nhefs_weights$w_atm |> vctrs::vec_data()
     )$estimate
   )
 
@@ -209,7 +209,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double()
+      nhefs_weights$w_atm |> vctrs::vec_data()
     )$estimate
   )
 
@@ -218,7 +218,7 @@ test_that("tidy_smd() works with many weights", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double()
+      nhefs_weights$w_atm |> vctrs::vec_data()
     )$estimate
   )
 })
@@ -253,7 +253,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double()
+      nhefs_weights$w_ate |> vctrs::vec_data()
     )$estimate
   )
 
@@ -262,7 +262,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double()
+      nhefs_weights$w_ate |> vctrs::vec_data()
     )$estimate
   )
 
@@ -271,7 +271,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double()
+      nhefs_weights$w_ate |> vctrs::vec_data()
     )$estimate
   )
 
@@ -280,7 +280,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double()
+      nhefs_weights$w_att |> vctrs::vec_data()
     )$estimate
   )
 
@@ -289,7 +289,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double()
+      nhefs_weights$w_att |> vctrs::vec_data()
     )$estimate
   )
 
@@ -298,7 +298,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double()
+      nhefs_weights$w_att |> vctrs::vec_data()
     )$estimate
   )
 
@@ -307,7 +307,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double()
+      nhefs_weights$w_atm |> vctrs::vec_data()
     )$estimate
   )
 
@@ -316,7 +316,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double()
+      nhefs_weights$w_atm |> vctrs::vec_data()
     )$estimate
   )
 
@@ -325,7 +325,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double()
+      nhefs_weights$w_atm |> vctrs::vec_data()
     )$estimate
   )
 
@@ -334,7 +334,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atc |> as.double()
+      nhefs_weights$w_atc |> vctrs::vec_data()
     )$estimate
   )
 
@@ -343,7 +343,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atc |> as.double()
+      nhefs_weights$w_atc |> vctrs::vec_data()
     )$estimate
   )
 
@@ -352,7 +352,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atc |> as.double()
+      nhefs_weights$w_atc |> vctrs::vec_data()
     )$estimate
   )
 
@@ -361,7 +361,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ato |> as.double()
+      nhefs_weights$w_ato |> vctrs::vec_data()
     )$estimate
   )
 
@@ -370,7 +370,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ato |> as.double()
+      nhefs_weights$w_ato |> vctrs::vec_data()
     )$estimate
   )
 
@@ -379,7 +379,7 @@ test_that("tidy_smd() works with tidyselect", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ato |> as.double()
+      nhefs_weights$w_ato |> vctrs::vec_data()
     )$estimate
   )
 })
@@ -419,7 +419,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double(),
+      nhefs_weights$w_ate |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -429,7 +429,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double(),
+      nhefs_weights$w_ate |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -439,7 +439,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_ate |> as.double(),
+      nhefs_weights$w_ate |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -449,7 +449,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double(),
+      nhefs_weights$w_att |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -459,7 +459,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double(),
+      nhefs_weights$w_att |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -469,7 +469,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_att |> as.double(),
+      nhefs_weights$w_att |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -479,7 +479,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$age,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double(),
+      nhefs_weights$w_atm |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -489,7 +489,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$race,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double(),
+      nhefs_weights$w_atm |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
@@ -499,7 +499,7 @@ test_that("standard errors return correctly", {
     smd::smd(
       nhefs_weights$education,
       nhefs_weights$qsmk,
-      nhefs_weights$w_atm |> as.double(),
+      nhefs_weights$w_atm |> vctrs::vec_data(),
       std.error = TRUE
     )$std.error
   )
