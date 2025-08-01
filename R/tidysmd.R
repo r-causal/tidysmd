@@ -206,7 +206,7 @@ tidy_weighted_smd <- function(
         ~ smd::smd(
           .x,
           !!.group,
-          w = as.double(!!.wts_sym),
+          w = vctrs::vec_data(!!.wts_sym),
           na.rm = na.rm,
           gref = gref,
           std.error = std.error
@@ -221,7 +221,7 @@ tidy_weighted_smd <- function(
         ~ smd::smd(
           .x,
           !!.group,
-          w = as.double(!!.wts_sym),
+          w = vctrs::vec_data(!!.wts_sym),
           na.rm = na.rm,
           gref = gref,
           std.error = std.error
