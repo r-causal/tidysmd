@@ -1,7 +1,7 @@
 Package: tidysmd
 Title: Tidy Standardized Mean Differences
 Version: 0.2.0.9000
-Authors@R: 
+Authors@R:
     person("Malcolm", "Barrett", , "malcolmbarrett@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0299-5825"))
 Description: Tidy standardized mean differences ('SMDs'). 'tidysmd' uses
@@ -11,9 +11,9 @@ License: MIT + file LICENSE
 URL: https://github.com/r-causal/tidysmd,
     https://r-causal.github.io/tidysmd/
 BugReports: https://github.com/r-causal/tidysmd/issues
-Depends: 
+Depends:
     R (>= 3.5)
-Imports: 
+Imports:
     dplyr,
     purrr,
     rlang,
@@ -23,16 +23,14 @@ Imports:
     tidyselect,
     utils,
     vctrs
-Suggests: 
+Suggests:
     covr,
     ggplot2,
     MatchIt,
-    propensity (>= 0.0.0.9000),
+    propensity,
     spelling,
     testthat (>= 3.0.0),
     vdiffr
-Remotes: 
-    r-causal/propensity
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US

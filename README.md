@@ -71,14 +71,14 @@ tidy_smd(
 #>  2 race      observed 1      0.177  
 #>  3 education observed 1      0.196  
 #>  4 age       w_ate    1     -0.00585
-#>  5 race      w_ate    1      0.00664
+#>  5 race      w_ate    1      0.00703
 #>  6 education w_ate    1      0.0347 
-#>  7 age       w_att    1     -0.0120 
-#>  8 race      w_att    1      0.00365
-#>  9 education w_att    1      0.0267 
-#> 10 age       w_atm    1     -0.00184
-#> 11 race      w_atm    1      0.00113
-#> 12 education w_atm    1      0.00934
+#>  7 age       w_att    1     -0.0122 
+#>  8 race      w_att    1      0.00325
+#>  9 education w_att    1      0.0289 
+#> 10 age       w_atm    1     -0.00187
+#> 11 race      w_atm    1      0.00102
+#> 12 education w_atm    1      0.00961
 ```
 
 Having SMDs in a tidy format makes it easy to work with the estimates,
@@ -107,7 +107,7 @@ ggplot(
   geom_love()
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" alt="" width="100%" />
 
 You can also use the quick-plotting function `love_plot()`, if you
 prefer:
@@ -118,7 +118,7 @@ love_plot(plot_df) +
   ylab(NULL)
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
 
 ## Example: Matching
 
@@ -154,7 +154,7 @@ match_smd <- tidy_smd(
 love_plot(match_smd)
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" />
 
 The downside here is that you can’t compare multiple matching strategies
 to the observed dataset; the label on the plot is also wrong. tidysmd
@@ -190,4 +190,4 @@ many_matched_smds <- tidy_smd(
 love_plot(many_matched_smds)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" alt="" width="100%" />
