@@ -10,6 +10,8 @@
 coverage](https://codecov.io/gh/malcolmbarrett/tidysmd/branch/main/graph/badge.svg)](https://app.codecov.io/gh/malcolmbarrett/tidysmd?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tidysmd)](https://CRAN.R-project.org/package=tidysmd)
+[![R-universe
+version](https://r-causal.r-universe.dev/tidysmd/badges/version)](https://r-causal.r-universe.dev/tidysmd)
 <!-- badges: end -->
 
 **Note: tidysmd has been subsumed under the [halfmoon
@@ -30,12 +32,22 @@ You can install the most recent version of tidysmd from CRAN with:
 install.packages("tidysmd")
 ```
 
-Alternatively, you can install the development version of tidysmd from
-[GitHub](https://github.com/) with:
+You can install the development version of tidysmd from
+[r-causal.r-universe.dev](https://r-causal.r-universe.dev/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("malcolmbarrett/tidysmd")
+install.packages(
+  "tidysmd",
+  repos = c("https://r-causal.r-universe.dev", getOption("repos"))
+)
+```
+
+You can also install the development version of tidysmd from source from
+[GitHub](https://github.com/r-causal/tidysmd) with:
+
+``` r
+# install.packages("pak")
+pak::pak("r-causal/tidysmd")
 ```
 
 ## Example: Weighting
